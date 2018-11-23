@@ -279,8 +279,7 @@ module.exports = {
             exclude: cssModuleRegex,
             use: getStyleLoaders({
               importLoaders: 1,
-              //modules = true,
-              //localIdentName: '[name]_[local]_[hash:base64:5]'
+
             }),
           },
           // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
@@ -309,7 +308,7 @@ module.exports = {
           // Adds support for CSS Modules, but using SASS
           // using the extension .module.scss or .module.sass
           {
-            //test: /\.css$/,
+
             test: sassModuleRegex,
             use: getStyleLoaders(
               {
@@ -317,7 +316,6 @@ module.exports = {
                 modules: true,
                 getLocalIdent: getCSSModuleLocalIdent,
 
-                loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
               },
               'sass-loader'
             ),

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Person from './Person/Person';
 
-import classes from './App.css';
+import './App.css';
 
 
 
 class App extends Component {
   state = {
-    Persons: [
+    persons: [
       { id: 'abc', name: 'Ade', age: 14 },
       { id: 'def', name: 'Seyi', age: 23 },
       { id: 'jkl', name: 'Tunde', age: 10 }
@@ -18,27 +18,25 @@ class App extends Component {
 
 
   nameChangeHandler = (event, id) => {
-    const personIndex = this.state.Persons.findIndex(p => {
+    const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
     });
 
     const person = {
-      ...this.state.Persons[personIndex]
+      ...this.state.persons[personIndex]
     };
 
     person.name = event.target.value;
-    const Persons = [...this.state.Persons];
-    Persons[personIndex] = person;
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
 
-    this.setState({
-      Persons: Persons
-    })
+    this.setState({ persons: persons });
   }
 
   deletePersonHandler = (personIndex) => {
-    const Persons = [...this.state.Persons];
-    Persons.splice(personIndex, 1);
-    this.setState({ Persons: Persons })
+    const persons = [...this.state.persons];
+    persons.splice(personIndex, 1);
+    this.setState({ persons: persons });
   }
 
   togglePersonHandler = () => {
@@ -61,7 +59,7 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.Persons.map((person, index) => {
+          {this.state.persons.map((person, index) => {
             return <Person
               click={() => this.deletePersonHandler(index)}
               name={person.name}
@@ -69,10 +67,7 @@ class App extends Component {
               key={person.id}
               changed={(event) => this.nameChangeHandler(event, person.id)}
             />
-          }
-          )
-
-          }
+          })}
 
         </div>
       );
@@ -80,19 +75,19 @@ class App extends Component {
 
     };
 
-    const assignedClasses = [];
-    if (this.state.Persons.length <= 2) {
-      assignedClasses.push(classes.red);
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
     }
 
-    if (this.state.Persons.length <= 1) {
-      assignedClasses.push(classes.bold);
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
     }
 
 
     return (
 
-      <div className={classes.App}>
+      <div className='App'>
         <h1>HI</h1>
         <p className={classes.join(' ')}> Hello ,I am learning react</p>
         <button
