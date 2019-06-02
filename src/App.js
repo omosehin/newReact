@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
+import React from "react";
+import Main from './LiftingState/Main'
+import Button from './LiftingState/Button'
+import Search from './LiftingState/Search'
+import Table from './LiftingState/Table'
 
-import './App.css';
-
-class App extends Component {
-  render() {
-    var greeting = 'Road to learning react';
-    return (
-      <div className="App">
-        <h1>{greeting}</h1>
+const App = ()=> {
+    return (   
+    <div>
+      <Main/>
       </div>
-    );
-  }
+       ); 
 }
 
 export default App;
+
+export {Button,Search,Table};
